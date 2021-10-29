@@ -16,7 +16,7 @@ const Todos = () => {
   
     const getAllTodos = () => {
         axios
-            .get(`http://localhost:5000/todos/?sort=${sort}`)
+            .get(`/todos/?sort=${sort}`)
             .then(res => {
                 console.log(res.data);
                 setTodos(res.data);

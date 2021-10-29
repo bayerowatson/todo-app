@@ -19,7 +19,7 @@ const App = () => {
           <Route path="/create">
             <Create />
           </Route>
-          <Route path="/todos">
+          <Route path="/todos-page">
             <Todos />
           </Route>
           <Route path="/about">
