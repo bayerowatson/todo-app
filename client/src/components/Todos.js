@@ -131,19 +131,19 @@ const Todos = () => {
             </p>
             <div className="collapse" id="options">
                 <div className="border row">
-                    <div className="col">
+                    <div className="col-sm">
                         <button className="btn" onClick={handleToggleCompleted}>
                             <i className={showCompleted ? 'bi bi-toggle-on fs-1' : 'bi bi-toggle-off fs-1'} />
                         </button>
                         <p>Hide/Show Completed</p>
                     </div>
-                    <div className="col">
+                    <div className="col-sm">
                         <button className="btn" onClick={handleToggleSort}>
                             <i className={(sort != 1) ? 'bi bi-toggle-on fs-1' : 'bi bi-toggle-off fs-1'} />
                         </button>
                         <p>Sort by Oldest/Newest</p>
                     </div>
-                    <div className="col">
+                    <div className="col-sm">
                         
                         <select 
                             className="form-select mt-3" 
@@ -177,7 +177,7 @@ const Todos = () => {
             
             <form className="row bg-light m-4 pt-3" onSubmit={handleSubmit}>
                 <div className="input-group mb-3">
-                    <div className="col-8">
+                    <div className="col-sm-8">
                         <input 
                             type="text" 
                             className="form-control form-control-lg" 
@@ -186,7 +186,7 @@ const Todos = () => {
                             onChange={handleTextChange}
                         />
                     </div>
-                    <div className="col-3">
+                    <div className="col-sm-3 col-7">
                         <input 
                             type="text" 
                             placeholder="add tag(s)"
