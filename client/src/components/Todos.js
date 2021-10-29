@@ -48,7 +48,7 @@ const Todos = () => {
         }
         else tag = filter;
         axios
-            .get(`http://localhost:5000/todos/?sort=${sort}&${search ? `text=${search}`: ''}&${tag ? `tags=${tag}`: ''}`)
+            .get(`/todos/?sort=${sort}&${search ? `text=${search}`: ''}&${tag ? `tags=${tag}`: ''}`)
             .then(res => setTodos(res.data))
             .catch(err => console.log(err))
     }
@@ -61,7 +61,7 @@ const Todos = () => {
 
     const handleDelete = (todo_id) => {
         axios
-            .delete(`http://localhost:5000/todos/${todo_id}`)
+            .delete(`/todos/${todo_id}`)
             .then(setTodos(prevState => prevState.filter(todo => todo._id != todo_id)))
             .catch(err => console.log(err));
     }
@@ -78,7 +78,7 @@ const Todos = () => {
         let i = todos.findIndex(todo => todo._id == todo_id);
         let tempTodos = [...todos];
         axios
-            .put(`http://localhost:5000/todos/${todo_id}`, {isComplete: !tempTodos[i].isComplete})
+            .put(`/todos/${todo_id}`, {isComplete: !tempTodos[i].isComplete})
             .then(()=> {
                 tempTodos[i].isComplete=!tempTodos[i].isComplete;
                 setTodos(tempTodos);
@@ -95,7 +95,7 @@ const Todos = () => {
             isComplete: false
         }
         axios
-            .post('http://localhost:5000/todos/', newEntry)
+            .post('/todos/', newEntry)
             .then((res) => {
                 newEntry._id = res.data.insertedId;
                 (sort != 1) ? setTodos(prevState => [newEntry, ...prevState]) :
@@ -112,7 +112,7 @@ const Todos = () => {
 
     useEffect(()=> {
         axios
-            .get('http://localhost:5000/todos/tags')
+            .get('/todos/tags')
             .then(res => {
                 console.log(res.data);
                 setTags(res.data);
