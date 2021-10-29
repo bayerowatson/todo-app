@@ -124,11 +124,15 @@ const Todos = () => {
 
     return ( 
         <div className='text-secondary'>
-            <p>
+            <nav className="nav navbar-dark bg-dark  mb-5 p-2">
+            <div className="container-fluid">
+                <a className="display-6 text-light" aria-current="page" href="/todos-page">Todos</a>
                 <button className="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#options">
-                    Options
+                    <i class="bi bi-list"></i>
                 </button>
-            </p>
+            </div>
+    
+            </nav>
             <div className="collapse" id="options">
                 <div className="border row">
                     <div className="col-sm">
@@ -173,6 +177,7 @@ const Todos = () => {
                     </div>
                 </div>
             </div>
+            
             
             
             <form className="row bg-light m-4 pt-3" onSubmit={handleSubmit}>

@@ -10,7 +10,7 @@ import Todos from './components/Todos';
 const App = () => {
     return ( 
 <div>
-    <Navbar />
+
     <div className='container-lg'>
         <Switch>
           <Route exact path="/">
