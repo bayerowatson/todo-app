@@ -4,14 +4,15 @@ import React from 'react';
 const Navbar = () => {
     return ( 
 <div>
-<ul className="nav nav-fill navbar-dark bg-dark display-6 mb-5 p-2">
-  <li className="nav-item">
-    <a className="nav-link active text-light" aria-current="page" href="/todos-page">Todos</a>
-  </li>
-  <li className="nav-item">
-    <a className="nav-link text-light" href="/about">About</a>
-  </li>
-</ul>
+  <nav className="navbar navbar-dark bg-dark px-3">
+      <div className="container-fluid">
+          <a className="navbar-brand display-5" href="/todos-page">Todos</a>
+          <button className="btn btn-outline-light fs-6" type="button" data-bs-toggle="collapse" data-bs-target="#options">
+          <span>Options </span>
+          <i class="bi bi-list"></i>
+      </button>
+      </div>
+  </nav>
 </div>
 
      );

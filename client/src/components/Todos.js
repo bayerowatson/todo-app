@@ -124,15 +124,7 @@ const Todos = () => {
 
     return ( 
         <div className='text-secondary'>
-            <nav className="nav navbar-dark bg-dark  mb-5 p-2">
-            <div className="container-fluid">
-                <a className="display-6 text-light" aria-current="page" href="/todos-page">Todos</a>
-                <button className="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#options">
-                    <i class="bi bi-list"></i>
-                </button>
-            </div>
-    
-            </nav>
+
             <div className="collapse" id="options">
                 <div className="border row">
                     <div className="col-sm">
@@ -209,7 +201,7 @@ const Todos = () => {
             {todos.map((todo, i) => {
                 return (
                     <div className={!showCompleted && todo.isComplete ? "d-none" : "bg-light p-3 m-4"} key={i}>
-                        <p className='display-6'>
+                        <p className='fs-2'>
                             <button className="btn" onClick={() => handleCheck(todo._id)}>
                                 <i className={todo.isComplete ? 'bi bi-check-square-fill fs-2' : 'bi bi-square fs-2'} />
                             </button>
