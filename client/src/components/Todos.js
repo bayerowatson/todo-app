@@ -143,9 +143,12 @@ const Todos = () => {
                         >
                             <option value={null}>Filter by tag...</option>
                             {tags.map((tag, i) => {
-                                return (
-                                    <option value={tag} key={i}>{tag}</option>
-                                )
+                                if (tag)
+                                {
+                                    return (
+                                        <option value={tag} key={i}>{tag}</option>
+                                    )
+                                }    
                             })}
                         </select>
                         <div className="text-end mb-2">
