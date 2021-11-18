@@ -33,24 +33,19 @@ const Todos = () => {
     }
 
     const handleFilterChange = (e) => {
-        setFilter(e.target.value);
+        let tag;
+        if (e.target.value == 'Filter by tag...') {
+            tag = null;
+        }
+        else tag = e.target.value;
+        axios
+            .get(`/todos/?sort=${sort}&${tag ? `tags=${tag}`: ''}`)
+            .then(res => setTodos(res.data))
+            .catch(err => console.log(err))
     }
 
     const handleSearchChange = (e) => {
         setSearch(e.target.value);
-    }
-
-    const handleSearch = (e) => {
-        e.preventDefault();
-        let tag;
-        if (filter == 'Filter by tag...') {
-            tag = null;
-        }
-        else tag = filter;
-        axios
-            .get(`/todos/?sort=${sort}&${search ? `text=${search}`: ''}&${tag ? `tags=${tag}`: ''}`)
-            .then(res => setTodos(res.data))
-            .catch(err => console.log(err))
     }
 
     const handleShowAll = () => {
@@ -153,16 +148,6 @@ const Todos = () => {
                                 )
                             })}
                         </select>
-                        <form className="input-group my-2" onSubmit={handleSearch}>
-                            <input 
-                                className="form-control" 
-                                type="text"
-                                value={search} 
-                                placeholder="Search..." 
-                                onChange={handleSearchChange}
-                            />
-                            <button className="btn btn-outline-secondary">Search</button>
-                        </form>
                         <div className="text-end mb-2">
                             <button className="btn btn-outline-secondary" onClick={handleShowAll}>Show All</button>
                         </div>

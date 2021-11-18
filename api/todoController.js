@@ -5,30 +5,25 @@ export default class TodoController {
         let response;
         let sort = req.query.sort;
         let query = {};
-        // if (Object.keys(req.query).length) {
-            if (req.query.user){
-                query.user = req.query.user;
-            };
-            if (req.query.start || req.query.end) {
-                query.date = {};
-                if (req.query.start) {
-                    query.date['$gte'] = new Date(req.query.start);
-                }
-                if (req.query.end) {
-                    query.date['$lte'] = new Date(req.query.end);
-                }
-            };
-            if (req.query.tags) {
-                query.tags = { $all: req.query.tags.split(',') };
+
+        if (req.query.user){
+            query.user = req.query.user;
+        };
+        if (req.query.start || req.query.end) {
+            query.date = {};
+            if (req.query.start) {
+                query.date['$gte'] = new Date(req.query.start);
             }
-            if (req.query.text) {
-                query['$text'] = { $search: req.query.text };
+            if (req.query.end) {
+                query.date['$lte'] = new Date(req.query.end);
             }
-            
-            response = await TodoDAO.search(query, sort);
-        // } else {
-        //     response = await TodoDAO.getAll(sort);
-        // }
+        };
+        if (req.query.tags) {
+            query.tags = { $all: req.query.tags.split(',') };
+        }
+        
+        response = await TodoDAO.search(query, sort);
+
         
         res.json(response);
     }
