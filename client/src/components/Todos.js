@@ -10,7 +10,6 @@ const Todos = () => {
     const [showCompleted, setShowCompleted] = useState(true);
     const [sort, setSort] = useState(-1);
     const [filter, setFilter] = useState(null);
-    const [search, setSearch] = useState(null);
     const [deleteId, setDeleteId] = useState(null);
     const [deleteText, setDeleteText] = useState("");
   
@@ -33,6 +32,7 @@ const Todos = () => {
     }
 
     const handleFilterChange = (e) => {
+        setFilter(e.target.value);
         let tag;
         if (e.target.value == 'Filter by tag...') {
             tag = null;
@@ -44,12 +44,7 @@ const Todos = () => {
             .catch(err => console.log(err))
     }
 
-    const handleSearchChange = (e) => {
-        setSearch(e.target.value);
-    }
-
     const handleShowAll = () => {
-        setSearch('');
         setFilter('Filter by tag...');
         getAllTodos();
     }
@@ -111,6 +106,9 @@ const Todos = () => {
             .then(res => {
                 console.log(res.data);
                 setTags(res.data);
+                if (!res.data.includes(filter)){
+                    setFilter('Filter by tag...');
+                }
             })
             .catch(err => console.log(err));
     }, [todos])
